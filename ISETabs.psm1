@@ -43,12 +43,12 @@ function New-ISERemoteTab
     {
         if (!($psISE))
         {Throw 'This cmdlet must be run from inside an ISE console.'}
+
+        $RemoteTabsList = [System.Collections.ArrayList]::new($ComputerName.Count)
     }
 
     Process
     {
-        $RemoteTabsList = [System.Collections.ArrayList]::new($ComputerName.Count)
-
         foreach ($Computer in $ComputerName)
         {
             Write-Verbose -Message "Creating new remote tab for $Computer..."
