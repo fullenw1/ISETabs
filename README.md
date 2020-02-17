@@ -1,23 +1,10 @@
 # ISETabs
 
-    .SYNOPSIS
-    Create ISE tabs with a PSSession to a remote computer.
+This module allows the user to act interactivelly on several ISE tabs.
+It is primarly intended to be used with remote PSSession tabs.
+Unlike jobs, you can proceed step by step and watch the result in each tab.
 
-    .DESCRIPTION
-    Create ISE tabs with a PSSession to a remote computer.
-
-    .PARAMETER ComputerName
-    Computer name for the tab name and PSSession.
-
-    .EXAMPLE
-    New-ISERemoteTab -ComputerName 'Comp1','Comp2'
-
-    .EXAMPLE
-    'Comp1','Comp2' |New-ISERemoteTab -ComputerName
-
-    .EXAMPLE
-    $ISETabs = New-ISERemoteTab 'Comp1','Comp2' -PassThru
-    $ISETabs | ForEach-Object -Process {$_.invoke({Get-ChildItem -Path C:\})}
-
-    In this example, you create two ISE tabs with a remote PSSession and assign the tab object to $ISETabs.
-    Then you invoke the same command-line to all selected tabs.
+- New-ISERemoteTab creates collection of remote PSSessions tabs from a list of computers.
+- Invoke-ISERemoteTab executes a scriptblock on a list of tabs.
+- Remove-ISERemoteTab removes one or several tabs from the list.
+- Add-ISERemoteTab adds remote PSSessions tabs to the list.
